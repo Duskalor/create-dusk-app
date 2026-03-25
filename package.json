@@ -1,0 +1,36 @@
+{
+  "name": "create-dusk-app",
+  "version": "1.0.0",
+  "description": "CLI para crear landing pages profesionales con Astro + Sanity",
+  "type": "module",
+  "bin": {
+    "create-dusk-app": "./dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch"
+  },
+  "dependencies": {
+    "@clack/prompts": "^0.9.0",
+    "degit": "^2.8.4"
+  },
+  "devDependencies": {
+    "@types/degit": "^2.8.6",
+    "@types/node": "^22.0.0",
+    "typescript": "^5.7.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "astro",
+    "sanity",
+    "landing-page",
+    "starter-kit",
+    "cli"
+  ],
+  "license": "MIT"
+}
