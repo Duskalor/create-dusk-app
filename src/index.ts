@@ -4,7 +4,7 @@ import degit from 'degit'
 import path from 'path'
 import fs from 'fs'
 
-const GITHUB_USER = 'duskalors' // cambiá esto por tu usuario de GitHub
+const GITHUB_USER = 'Duskalor' // cambiá esto por tu usuario de GitHub
 
 const TEMPLATES = [
   {
