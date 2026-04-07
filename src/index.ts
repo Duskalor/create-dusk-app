@@ -13,13 +13,18 @@ const TEMPLATES = [
     hint: 'Menú, galería, reservas y WhatsApp',
     branch: 'restaurant',
   },
-  // Agregar nuevos templates acá:
-  // {
-  //   value: 'tourism',
-  //   label: '🏔️  Tourism Agency',
-  //   hint: 'Tours, galería, reservas y WhatsApp',
-  //   branch: 'tourism',
-  // },
+  {
+    value: 'tourism',
+    label: '🏔️  Tourism Agency',
+    hint: 'Tours, galería, reservas y WhatsApp',
+    branch: 'tourism',
+  },
+  {
+    value: 'law',
+    label: '⚖️  Law Firm Landing Page',
+    hint: 'Estudio jurídico, áreas de práctica y contacto',
+    branch: 'law',
+  },
 ];
 
 async function main() {
@@ -73,13 +78,14 @@ async function main() {
     process.exit(1);
   }
 
+  const hasEnv = selected.branch !== 'law';
   p.outro(
     `✅ Proyecto creado en ./${projectName}\n\n` +
       `  Siguientes pasos:\n` +
       `  1.  cd ${projectName}\n` +
       `  2.  pnpm install\n` +
-      `  3.  cp .env.example .env  →  completá las variables\n` +
-      `  4.  pnpm dev\n`,
+      (hasEnv ? `  3.  cp .env.example .env  →  completá las variables\n` : '') +
+      `  ${hasEnv ? '4' : '3'}.  pnpm dev\n`,
   );
 }
 
