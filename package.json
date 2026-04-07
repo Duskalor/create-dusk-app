@@ -1,7 +1,7 @@
 {
   "name": "create-dusk-app",
-  "version": "1.0.1",
-  "description": "CLI para crear landing pages profesionales con Astro + Sanity",
+  "version": "1.1.0",
+  "description": "CLI para crear landing pages profesionales con Astro + Tailwind",
   "type": "module",
   "bin": {
     "create-dusk-app": "./dist/index.js"
