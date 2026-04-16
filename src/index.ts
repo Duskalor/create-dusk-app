@@ -3,29 +3,9 @@ import * as p from '@clack/prompts';
 import degit from 'degit';
 import path from 'path';
 import fs from 'fs';
+import { TEMPLATES, getHasEnv, validateProjectName } from './templates.js';
 
 const GITHUB_USER = 'Duskalor';
-
-const TEMPLATES = [
-  {
-    value: 'restaurant',
-    label: '🍽️  Restaurant Landing Page',
-    hint: 'Menú, galería, reservas y WhatsApp',
-    branch: 'restaurant',
-  },
-  {
-    value: 'tourism',
-    label: '🏔️  Tourism Agency',
-    hint: 'Tours, galería, reservas y WhatsApp',
-    branch: 'tourism',
-  },
-  {
-    value: 'law',
-    label: '⚖️  Law Firm Landing Page',
-    hint: 'Estudio jurídico, áreas de práctica y contacto',
-    branch: 'law',
-  },
-];
 
 async function main() {
   console.log('');
@@ -35,7 +15,8 @@ async function main() {
     message: '¿Cómo se llama el proyecto?',
     placeholder: 'mi-restaurante',
     validate: (v) => {
-      if (!v) return 'El nombre es requerido.';
+      const err = validateProjectName(v);
+      if (err) return err;
       if (fs.existsSync(path.resolve(process.cwd(), v))) {
         return `La carpeta "${v}" ya existe.`;
       }
@@ -78,7 +59,7 @@ async function main() {
     process.exit(1);
   }
 
-  const hasEnv = selected.branch !== 'law';
+  const hasEnv = getHasEnv(selected.branch);
   p.outro(
     `✅ Proyecto creado en ./${projectName}\n\n` +
       `  Siguientes pasos:\n` +
